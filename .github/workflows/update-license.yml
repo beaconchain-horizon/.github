@@ -1,0 +1,47 @@
+name: Update Copyright in Imported Repos
+
+on:
+  workflow_dispatch: # only runs manually
+
+jobs:
+  update-license:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo:
+          - beaconchain-2
+          - etherchain-light
+          - erc20-explorer
+          - eth.store
+          - eth2-knowledge-base
+          - eth2-package
+          - ethereum-function-signature-registry
+          - eth-rewards
+          - coda-explorer
+          - web3.js
+          - prysm
+          - zcash
+          - go-ethereum
+          - ethereumjs-abi
+          - pm2-gelf
+    steps:
+      - name: Checkout target repo
+        uses: actions/checkout@v3
+        with:
+          repository: "beaconchain-com/${{ matrix.repo }}"
+          token: ${{ secrets.LICENSE_UPDATER_TOKEN }}
+          fetch-depth: 1
+
+      - name: Add copyright line if missing
+        run: |
+          FILE="LICENSE"
+          if [ -f "$FILE" ]; then
+            if ! grep -q "Copyright (c) 2026 Mahdi Amolimoghaddam" "$FILE"; then
+              sed -i "1s/^/Copyright (c) 2026 Mahdi Amolimoghaddam\\n/" "$FILE"
+              git config user.name "beaconchain-com"
+              git config user.email "beaconchain@beaconchain.us"
+              git add "$FILE"
+              git commit -m "docs: add Mahdi Amolimoghaddam to copyright notice"
+              git push origin HEAD
+            fi
+          fi
