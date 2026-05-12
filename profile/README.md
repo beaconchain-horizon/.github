@@ -12,7 +12,7 @@ Perfect Security Score (10/10) · 100K+ Validators · Offline‑First
 ## 👤 Owner & Maintainer
 
 **Mahdi Amolimoghaddam**  
-GitHub: [beaconchain-com](https://github.com/beaconchain-com)  
+GitHub: [beaconchain-us](https://github.com/beaconchain-us)  
 Email: [beaconchain@beaconchain.us](mailto:beaconchain@beaconchain.us)  
 Wallet (ETH/USDC): `0x4E94F10F0a34a0DF229e68d5902644046258D678`
 
@@ -33,11 +33,11 @@ Wallet (ETH/USDC): `0x4E94F10F0a34a0DF229e68d5902644046258D678`
 
 | Repository | Description |
 | :--- | :--- |
-| [eth2‑beaconchain‑explorer](https://github.com/beaconchain-com/eth2-beaconchain-explorer) | Backend (Go) + Frontend (React) – the main explorer |
-| [eth2‑beaconchain‑explorer‑app](https://github.com/beaconchain-com/eth2-beaconchain-explorer-app) | Mobile dashboard for iOS and Android |
-| [beaconcha.in](https://github.com/beaconchain-com/beaconcha.in) | Configuration & deployment for beaconcha.in |
-| [Beaconchain.us](https://github.com/beaconchain-com/Beaconchain.us) | US‑hosted dashboard with offline signature |
-| [gobitfly](https://github.com/beaconchain-com/gobitfly) | Official organization metadata & ownership statement |
+| [eth2‑beaconchain‑explorer](https://github.com/beaconchain-us/eth2-beaconchain-explorer) | Backend (Go) + Frontend (React) – the main explorer |
+| [eth2‑beaconchain‑explorer‑app](https://github.com/beaconchain-us/eth2-beaconchain-explorer-app) | Mobile dashboard for iOS and Android |
+| [beaconcha.in](https://github.com/beaconchain-us/beaconcha.in) | Configuration & deployment for beaconcha.in |
+| [Beaconchain.us](https://github.com/beaconchain-us/Beaconchain.us) | US‑hosted dashboard with offline signature |
+| [gobitfly](https://github.com/beaconchain-us/gobitfly) | Official organization metadata & ownership statement |
 
 ---
 
