@@ -1,0 +1,64 @@
+name: Update all references after username change
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-references:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo:
+          - beaconchain-2
+          - etherchain-light
+          - erc20-explorer
+          - eth.store
+          - eth2-knowledge-base
+          - eth2-package
+          - ethereum-function-signature-registry
+          - eth-rewards
+          - coda-explorer
+          - web3.js
+          - prysm
+          - zcash
+          - go-ethereum
+          - ethereumjs-abi
+          - pm2-gelf
+          - .github
+          - gobitfly
+          - beaconcha.in
+          - Beaconchain.us
+          - eth2-beaconchain-explorer
+          - eth2-beaconchain-explorer-app
+    steps:
+      - name: Checkout target repo
+        uses: actions/checkout@v3
+        with:
+          repository: "beaconchain-us/${{ matrix.repo }}"
+          token: ${{ secrets.LICENSE_UPDATER_TOKEN }}
+          fetch-depth: 1
+
+      - name: Replace old username references
+        run: |
+          OLD="beaconchain-com"
+          NEW="beaconchain-us"
+          FOUND=0
+          FILES_TO_CHECK=("README.md" "profile/README.md" "LICENSE" "package.json" "docker-compose.yml" "Dockerfile" "go.mod" "index.html")
+          for FILE in "${FILES_TO_CHECK[@]}"; do
+            if [ -f "$FILE" ]; then
+              if grep -q "$OLD" "$FILE"; then
+                echo "Found '$OLD' in $FILE – replacing with '$NEW'"
+                sed -i "s/$OLD/$NEW/g" "$FILE"
+                FOUND=1
+              fi
+            fi
+          done
+          if [ $FOUND -eq 1 ]; then
+            git config user.name "beaconchain-us"
+            git config user.email "beaconchain@beaconchain.us"
+            git add -A
+            git commit -m "chore: replace beaconchain-com with beaconchain-us after username change"
+            git push origin HEAD
+          else
+            echo "No references to '$OLD' found. Skipping."
+          fi
